@@ -1,0 +1,7 @@
+// Substitutions
+! sub yo      = hi
+! sub hello   = hi
+! sub hey     = hi
+
++ hi
+- Hello!

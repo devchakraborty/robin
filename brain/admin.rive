@@ -1,0 +1,13 @@
++ admin
+- (TODO: authenticate this) Entering admin mode. Send URLs to add them as articles. Say "stop" to exit admin mode.{topic=admin}
+
+> topic admin
+  + [*] stop [*]
+  - Exiting admin mode.{topic=random}
+
+  + clear
+  - <call>clear</call>
+
+  + *
+  - <call>storeArticle</call>
+< topic

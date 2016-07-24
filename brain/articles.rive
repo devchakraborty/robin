@@ -1,0 +1,3 @@
++ [*] articles [*]
+- (TODO) Sure! Here are today's articles.
+^ <call>sendArticles</call>
