@@ -9,7 +9,9 @@
 
 > topic howareyou
   + good
-  - (TODO) I'm great at sharing awesome news and media content. What're you interested\s
+  - That's awesome! I've been having a great day also. :)\n
+  ^ Let's try to keep up the good vibes. I can help do that in a few ways.\n
+  ^ I'm great at sharing awesome news and media content. What're you interested\s
   ^ in seeing right now?{topic=contenttype}
   ^ <call>quickReply News</call>
   ^ <call>quickReply Media</call>
@@ -36,37 +38,8 @@
 
   + media
   - <set contentType=media>
-  ^ (TODO)
-< topic
-
-> topic notifynews
-  + *
-  * <get contentType> == news => Pretty cool stuff eh? I'm a news junkie so every day I curate five top articles\s
-  ^ for my friends. I usually try to keep Donald Trump out of my list though.\n
-  ^ Would you like me to send you a notification for the news every day?{topic=notifynewsyesno}
-  ^ <call>quickReply "Heck yes!"</call>
-  ^ <call>quickReply No</call>
-< topic
-
-> topic notifynewsyesno
-  + [*] yes [*]
-  - Sweet! Now, when you have cool dinner conversations, you can tell them that a little birdy told you. ;)\n
-  ^ What time of day would you like me to notify you with some articles?{topic=notifynewstime}
-  ^ <call>quickReply Morning</call>
-  ^ <call>quickReply Evening</call>
-  ^ <call>quickReply Both</call>
-
-  + [*] no [*]
-  - (TODO) Aw, okay.{topic=random}
-< topic
-
-> topic notifynewstime
-  + [*] no [*]
-  - (TODO) Aw, okay.{topic=random}
-
-  + *
-  - (TODO: actually subscribe) Alright, now we're all set up!\n
-  ^ You can also ping me anytime you're bored and I can share some cool content.\n
-  ^ Anyway, I got some more to my personality than these stunning looks, but hey,\s
-  ^ you can't share everything on the first date right?{topic=random}
+  ^ Cool.
+  ^ <call>sendImage http://i.imgur.com/zT2MN4a.gif</call>
+  ^ {topic=media_intro}
+  ^ <call>sendAgain</call>
 < topic

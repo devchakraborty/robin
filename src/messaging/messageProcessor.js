@@ -4,6 +4,7 @@ import _ from 'lodash'
 import natural from 'natural'
 import moment from 'moment'
 import Article from '../models/Article'
+import Media from '../models/Media'
 import User from '../models/User'
 import queueOutgoingMessage from './outgoingMessageQueue'
 
@@ -51,6 +52,27 @@ bot.setSubroutine('storeArticle', (rs) => {
         return 'Unable to store article. Check that database is up and URL is well-formed.'
       }
       return 'Stored article.'
+    }).then(resolve).catch(reject)
+  })
+})
+
+bot.setSubroutine('sendImage', (rs, [url]) => {
+  let currentUser = rs.currentUser()
+  let vars = rs.getUservars(currentUser)
+  let images = vars.sendImages || []
+  images.push(url)
+  rs.setUservars(currentUser, {sendImages: images})
+  return ''
+})
+
+bot.setSubroutine('sendMedia', (rs) => {
+  return new rs.Promise((resolve, reject) => {
+    co(function*() {
+      let currentUser = rs.currentUser()
+      let vars = rs.getUservars(currentUser)
+      let media = yield Media.getCurrent()
+      rs.setUservars(currentUser, {sendImages: _.map(media, item => item.val().url)}) // TODO: could be links
+      return ''
     }).then(resolve).catch(reject)
   })
 })
@@ -135,6 +157,25 @@ function buildMessages(reply, vars) {
         }
       }
       messages.push(data)
+    }
+
+    if (vars.sendImages) {
+      let images = vars.sendImages
+      images.forEach((image) => {
+        messages.push({
+          recipient: {
+            id: vars.id
+          },
+          message: {
+            attachment: {
+              type: "image",
+              payload: {
+                url: image
+              }
+            }
+          }
+        })
+      })
     }
 
     return messages

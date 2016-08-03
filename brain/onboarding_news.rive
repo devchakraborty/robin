@@ -1,0 +1,31 @@
+> topic notifynews
+  + *
+  * <get contentType> == news => Pretty cool stuff eh? I'm a news junkie so every day I curate five top articles\s
+  ^ for my friends. I usually try to keep Donald Trump out of my list though.\n
+  ^ Would you like me to send you a notification for the news every day?{topic=notifynewsyesno}
+  ^ <call>quickReply "Heck yes!"</call>
+  ^ <call>quickReply No</call>
+< topic
+
+> topic notifynewsyesno
+  + [*] yes [*]
+  - Sweet! Now, when you have cool dinner conversations, you can tell them that a little birdy told you. ;)\n
+  ^ What time of day would you like me to notify you with some articles?{topic=notifynewstime}
+  ^ <call>quickReply Morning</call>
+  ^ <call>quickReply Evening</call>
+  ^ <call>quickReply Both</call>
+
+  + [*] no [*]
+  - (TODO) Aw, okay.{topic=random}
+< topic
+
+> topic notifynewstime
+  + [*] no [*]
+  - (TODO) Aw, okay.{topic=random}
+
+  + *
+  - (TODO: actually subscribe) Alright, now we're all set up!\n
+  ^ You can also ping me anytime you're bored and I can share some cool content.\n
+  ^ Anyway, I got some more to my personality than these stunning looks, but hey,\s
+  ^ you can't share everything on the first date right?{topic=random}
+< topic

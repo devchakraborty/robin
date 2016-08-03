@@ -1,0 +1,71 @@
+> topic media_intro
+  + *
+  - This is where all the fun goes down, smart choice.\n
+  ^ Who needs to educate themselves with news when you can watch animal gifs, amirite?\n
+  ^ Well, here are your daily dank memes.
+  ^ <call>sendMedia</call>
+  ^ {topic=media_funny_ask}
+< topic
+
+> topic media_funny_ask
+  + *
+  - Okay, am I not the funniest person you know or what?
+  ^ <call>quickReply Yes</call>
+  ^ <call>quickReply No</call>
+  ^ <call>quickReply Maybe</call>
+  ^ {topic=media_funny}
+< topic
+
+> topic media_funny
+  + *
+  - Well, joke's on you, I'm not a person anyways. I'm a bird.\n
+  ^ I'm the real definition of fly.\n
+  ^ All jokes aside, I'm (also) great at sharing fun things with you.\n
+  ^ Want some daily dank memes or not?
+  ^ <call>quickReply F'sho!</call>
+  ^ <call>quickReply Nah</call>
+  ^ {topic=media_news}
+< topic
+
+> topic media_news
+  + yes
+  - Nice! Welcome to the cool kids club.\n
+  ^ Want me to send you funny stuff along with your news at once?
+  ^ <call>quickReply Yes</call>
+  ^ <call>quickReply No</call>
+  ^ {topic=media_news_subscribe}
+
+  + no
+  - (TODO){topic=random}
+
+  + f'sho
+  @ yes
+< topic
+
+> topic media_news_subscribe
+  + yes
+  - (TODO: add news) What time of day would you like me to notify you with some fun content?
+  ^ <call>quickReply Morning</call>
+  ^ <call>quickReply Evening</call>
+  ^ <call>quickReply Both</call>
+  ^ {topic=media_time}
+
+  + no
+  - What time of day would you like me to notify you with some fun content?
+  ^ <call>quickReply Morning</call>
+  ^ <call>quickReply Evening</call>
+  ^ <call>quickReply Both</call>
+  ^ {topic=media_time}
+
+  + *
+  - Huh?
+  ^ <call>quickReply Yes</call>
+  ^ <call>quickReply No</call>
+< topic
+
+> topic media_time
+  + *
+  - (TODO: actually subscribe) Sweet, now we are all good!\n
+  ^ You can also hit me up anytime you're feeling distracted and I can share some stuff with you.
+  ^ {topic=random}
+< topic
